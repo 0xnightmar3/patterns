@@ -4,10 +4,36 @@
  * - sms
  * - push
  */
-import { NotificationService } from "./notifications/notifier";
+import "dotenv/config";
+import { ISmsConfig } from "./notifications/smsNotifier";
+import { IPushConfig } from "./notifications/pushNotifier";
+import { IEmailConfig } from "./notifications/emailNotifier";
+import { ISlackConfig } from "./notifications/slackNotifier";
+import { NotificationService, NotifierFactory } from "./notifications/notifier";
+
+const emailConfig: IEmailConfig = {
+    smtpPort: process.env.SMTP_PORT,
+    smtpHost: process.env.SMTP_HOST,
+    fromAddress: process.env.FROM_ADDRESS,
+};
+
+const pushConfig: IPushConfig = {
+    appId: process.env.APP_ID,
+};
+
+const smsConfig: ISmsConfig = {
+    apiKey: process.env.API_KEY,
+    senderId: process.env.SENDER_ID,
+};
+
+const slackConfig: ISlackConfig = {
+    fromId: process.env.FROM_ID,
+};
 
 const main = async () => {
-    const notificationService = new NotificationService();
+    const notifierFactory = new NotifierFactory(smsConfig, pushConfig, emailConfig, slackConfig);
+
+    const notificationService = new NotificationService(notifierFactory);
 
     await notificationService.sendNotification("email", {
         to: "marko.lazic@igt.com",

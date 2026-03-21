@@ -11,5 +11,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@types/node": "^25.5.0",
+    "dotenv": "^17.3.1"
+  }
 }

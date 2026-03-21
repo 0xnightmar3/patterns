@@ -6,9 +6,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * - sms
  * - push
  */
+require("dotenv/config");
 const notifier_1 = require("./notifications/notifier");
+const emailConfig = {
+    smtpPort: process.env.SMTP_PORT,
+    smtpHost: process.env.SMTP_HOST,
+    fromAddress: process.env.FROM_ADDRESS,
+};
+const pushConfig = {
+    appId: process.env.APP_ID,
+};
+const smsConfig = {
+    apiKey: process.env.API_KEY,
+    senderId: process.env.SENDER_ID,
+};
+const slackConfig = {
+    fromId: process.env.FROM_ID,
+};
 const main = async () => {
-    const notificationService = new notifier_1.NotificationService();
+    const notifierFactory = new notifier_1.NotifierFactory(smsConfig, pushConfig, emailConfig, slackConfig);
+    const notificationService = new notifier_1.NotificationService(notifierFactory);
     await notificationService.sendNotification("email", {
         to: "marko.lazic@igt.com",
         subject: "Hope this email finds you well...",

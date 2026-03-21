@@ -31,7 +31,7 @@ const slackConfig: ISlackConfig = {
 };
 
 const main = async () => {
-    const notifierFactory = new NotifierFactory(smsConfig, pushConfig, emailConfig, slackConfig);
+    const notifierFactory = new NotifierFactory(smsConfig, pushConfig, slackConfig, emailConfig);
 
     const notificationService = new NotificationService(notifierFactory);
 

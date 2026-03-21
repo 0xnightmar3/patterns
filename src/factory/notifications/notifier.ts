@@ -15,22 +15,29 @@ export interface INotifier {
     send: (payload: INotificationPayload) => Promise<void>;
 };
 
+type NotifierCreator = () => INotifier;
+
 export class NotifierFactory {
+    private readonly creators: Record<NotificationType, NotifierCreator>;
+
     constructor(
-        private readonly smsConfig: ISmsConfig,
-        private readonly pushConfig: IPushConfig,
-        private readonly emailConfig: IEmailConfig,
-        private readonly slackConfig: ISlackConfig,
-    ) {};
+        sms: ISmsConfig,
+        push: IPushConfig,
+        slack: ISlackConfig,
+        email: IEmailConfig,
+    ) {
+        this.creators = {
+            sms: () => new SmsNotifier(sms),
+            push: () => new PushNotifier(push),
+            slack: () => new SlackNotifier(slack),
+            email: () => new EmailNotifier(email),
+        };
+    };
 
     create(type: NotificationType): INotifier {
-        switch (type) {
-            case "sms": return new SmsNotifier(this.smsConfig);
-            case "push": return new PushNotifier(this.pushConfig);
-            case "email": return new EmailNotifier(this.emailConfig);
-            case "slack": return new SlackNotifier(this.slackConfig);
-            default: throw new Error(`Unsupported notification type: ${type}`);
-        };
+        const creator = this.creators[type];
+        if (!creator) throw new Error(`Unsupported notification type: ${type}`);
+        return creator();
     };
 };
 

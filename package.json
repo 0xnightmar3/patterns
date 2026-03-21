@@ -5,8 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "factory": "node ./dist/factory/factory.js",
-    "builder": "node ./dist/builder/builder.js"
+    "factory": "npm run build && node ./dist/factory/factory.js",
+    "builder": "npm run build && node ./dist/builder/builder.js",
+    "strategy": "npm run build && node ./dist/strategy/strategy.js"
   },
   "keywords": [],
   "author": "",

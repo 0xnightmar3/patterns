@@ -6,19 +6,19 @@ const main = async () => {
     const notificationService = new NotificationService(factory);
 
     await notificationService.sendNotification("email", {
-        to: "marko.lazic@igt.com",
+        to: process.env.FROM_ADDRESS,
         subject: "Hope this email finds you well...",
         message: "Dear Marko, you have been promoted to CEO. Enjoy!",
     });
 
     await notificationService.sendNotification("email", {
-        to: "marko.lazic@igt.com",
+        to: process.env.FROM_ADDRESS,
         subject: "Required field for emails :)",
         message: "Helo from the other side!",
     });
 
     await notificationService.sendNotification("push", {
-        to: "+381666330051",
+        to: process.env.PHONE_NUMBER,
         message: "New notification. Swipe to show the full version!",
     });
 

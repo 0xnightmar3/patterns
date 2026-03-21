@@ -10,6 +10,7 @@ declare global {
             SMTP_HOST: string;
             SMTP_PORT: number;
             FROM_ADDRESS: string;
+            PHONE_NUMBER: string;
         };
     };
 };

@@ -1,4 +1,4 @@
-export type NotificationType = "email" | "sms" | "push";
+export type NotificationType = "email" | "sms" | "push" | "slack";
 export interface INotificationPayload {
     to: string;
     message: string;

@@ -1,6 +1,9 @@
-import { EmailNotifier, SmsNotifier, PushNotifier } from ".";
+import { SmsNotifier } from "./smsNotifier";
+import { PushNotifier } from "./pushNotifier";
+import { EmailNotifier } from "./emailNotifier";
+import { SlackNotifier } from "./slackNotifier";
 
-export type NotificationType = "email" | "sms" | "push";
+export type NotificationType = "email" | "sms" | "push" | "slack";
 
 export interface INotificationPayload {
     to: string;
@@ -18,6 +21,7 @@ class NotificationFactory {
             case "email": return new EmailNotifier();
             case "sms": return new SmsNotifier();
             case "push": return new PushNotifier();
+            case "slack": return new SlackNotifier();
             default: throw new Error(`Unsupported notification type: ${type}`);
         };
     };

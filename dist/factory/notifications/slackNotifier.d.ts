@@ -1,5 +1,5 @@
 import type { INotificationPayload, INotifier } from "./notifier";
-export declare class PushNotifier implements INotifier {
+export declare class SlackNotifier implements INotifier {
     send(payload: INotificationPayload): Promise<void>;
 }
-//# sourceMappingURL=pushNotifier.d.ts.map
+//# sourceMappingURL=slackNotifier.d.ts.map

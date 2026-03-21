@@ -1,4 +1,4 @@
-import type { INotifier, INotificationPayload } from "./index";
+import type { INotifier, INotificationPayload } from "./notifier";
 
 export class SmsNotifier implements INotifier {
     async send(payload: INotificationPayload): Promise<void> {

@@ -4,7 +4,7 @@
  * - sms
  * - push
  */
-import { NotificationService } from "./notifications";
+import { NotificationService } from "./notifications/notifier";
 
 const main = async () => {
     const notificationService = new NotificationService();
@@ -29,6 +29,11 @@ const main = async () => {
     await notificationService.sendNotification("sms", {
         to: "marko@arch",
         message: "Hello to your Arch machine. Btw, I use Gentoo.",
+    });
+
+    await notificationService.sendNotification("slack", {
+        to: "Mare",
+        message: "Hey, have a minute to talk about a bug I encountered?",
     });
 };
 

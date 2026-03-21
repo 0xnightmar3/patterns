@@ -1,10 +1,9 @@
 import type { INotificationPayload, INotifier } from "./notifier";
 
-export class PushNotifier implements INotifier {
+export class SlackNotifier implements INotifier {
     async send(payload: INotificationPayload): Promise<void> {
-        console.log(`[PUSH]`);
-        console.log(`Device/User ID: ${payload.to}`);
+        console.log("[SLACK");
+        console.log(`To: ${payload.to}`);
         console.log(`Message: ${payload.message}`);
-        console.log(`----------------------`);
     };
 };

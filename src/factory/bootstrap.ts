@@ -36,4 +36,4 @@ factory.register("sms", () => new SmsNotifier(smsConfig));
 factory.register("push", () => new PushNotifier(pushConfig));
 factory.register("slack", () => new SlackNotifier(slackConfig));
 factory.register("email", () => new EmailNotifier(emailConfig));
-factory.register("random", () => new RandomNotifier(randomConfig))
+factory.register("random", () => new RandomNotifier(randomConfig));

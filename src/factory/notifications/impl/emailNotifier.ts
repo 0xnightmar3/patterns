@@ -1,10 +1,4 @@
-import type { INotifier, INotificationPayload } from "./notifier";
-
-export interface IEmailConfig {
-    smtpHost: string;
-    smtpPort: number;
-    fromAddress: string;
-};
+import type { INotifier, INotificationPayload, IEmailConfig } from "../../types";
 
 export class EmailNotifier implements INotifier {
     constructor(private readonly config: IEmailConfig) {};

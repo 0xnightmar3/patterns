@@ -1,8 +1,4 @@
-import type { INotificationPayload, INotifier } from "./notifier";
-
-export interface IPushConfig {
-    appId: string;
-};
+import type { INotificationPayload, INotifier, IPushConfig } from "../../types";
 
 export class PushNotifier implements INotifier {
     constructor(private readonly pushConfig: IPushConfig) {};

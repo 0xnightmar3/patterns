@@ -1,9 +1,4 @@
-import type { INotifier, INotificationPayload } from "./notifier";
-
-export interface ISmsConfig {
-    apiKey: string;
-    senderId: string;
-};
+import type { INotifier, INotificationPayload, ISmsConfig } from "../../types";
 
 export class SmsNotifier implements INotifier {
     constructor(private readonly smsConfig: ISmsConfig) {};

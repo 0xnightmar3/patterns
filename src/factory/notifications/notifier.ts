@@ -1,41 +1,14 @@
-import { SmsNotifier, type ISmsConfig } from "./smsNotifier";
-import { PushNotifier, type IPushConfig } from "./pushNotifier";
-import { EmailNotifier, type IEmailConfig } from "./emailNotifier";
-import { SlackNotifier, type ISlackConfig } from "./slackNotifier";
-
-export type NotificationType = "email" | "sms" | "push" | "slack";
-
-export interface INotificationPayload {
-    to: string;
-    message: string;
-    subject?: string;
-};
-
-export interface INotifier {
-    send: (payload: INotificationPayload) => Promise<void>;
-};
-
-type NotifierCreator = () => INotifier;
+import type { NotificationType, NotifierCreator, INotifier, INotificationPayload } from "../types";;
 
 export class NotifierFactory {
-    private readonly creators: Record<NotificationType, NotifierCreator>;
+    private readonly creators = new Map<NotificationType, NotifierCreator>();
 
-    constructor(
-        sms: ISmsConfig,
-        push: IPushConfig,
-        slack: ISlackConfig,
-        email: IEmailConfig,
-    ) {
-        this.creators = {
-            sms: () => new SmsNotifier(sms),
-            push: () => new PushNotifier(push),
-            slack: () => new SlackNotifier(slack),
-            email: () => new EmailNotifier(email),
-        };
+    register(type: NotificationType, creator: NotifierCreator): void {
+        this.creators.set(type, creator);
     };
 
     create(type: NotificationType): INotifier {
-        const creator = this.creators[type];
+        const creator = this.creators.get(type);
         if (!creator) throw new Error(`Unsupported notification type: ${type}`);
         return creator();
     };

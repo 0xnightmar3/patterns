@@ -1,8 +1,4 @@
-import type { INotificationPayload, INotifier } from "./notifier";
-
-export interface ISlackConfig {
-    fromId: string;
-};
+import type { INotificationPayload, INotifier, ISlackConfig } from "../../types";
 
 export class SlackNotifier implements INotifier {
     constructor(private readonly slackConfig: ISlackConfig) {};

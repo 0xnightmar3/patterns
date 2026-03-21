@@ -1,4 +1,4 @@
-export type NotificationType = "email" | "sms" | "push" | "slack";
+export type NotificationType = "email" | "sms" | "push" | "slack" | "random";
 
 export interface INotificationPayload {
     to: string;
@@ -29,4 +29,9 @@ export interface ISlackConfig {
 export interface ISmsConfig {
     apiKey: string;
     senderId: string;
+};
+
+export interface IRandomConfig {
+    zipCode: number;
+    country: string;
 };

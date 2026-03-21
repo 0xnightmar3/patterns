@@ -31,6 +31,11 @@ const main = async () => {
         to: "Mare",
         message: "Hey, have a minute to talk about a bug I encountered?",
     });
+
+    await notificationService.sendNotification("random", {
+        to: "Marko Whatever",
+        message: "hehe xd",
+    })
 };
 
 try {

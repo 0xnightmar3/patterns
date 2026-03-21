@@ -8,5 +8,6 @@ export class SlackNotifier implements INotifier {
         console.log(`From: ${this.slackConfig.fromId}`);
         console.log(`To: ${payload.to}`);
         console.log(`Message: ${payload.message}`);
+        console.log(`---------------------------`);
     };
 };

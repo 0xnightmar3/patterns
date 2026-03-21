@@ -1,0 +1,15 @@
+{
+  "name": "patterns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "factory": "node ./dist/factory/factory.js",
+    "builder": "node ./dist/builder/builder.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

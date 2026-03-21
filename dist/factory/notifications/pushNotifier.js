@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PushNotifier = void 0;
+class PushNotifier {
+    async send(payload) {
+        console.log(`[PUSH]`);
+        console.log(`Device/User ID: ${payload.to}`);
+        console.log(`Message: ${payload.message}`);
+        console.log(`----------------------`);
+    }
+    ;
+}
+exports.PushNotifier = PushNotifier;
+;
+//# sourceMappingURL=pushNotifier.js.map

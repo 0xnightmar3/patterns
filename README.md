@@ -2,11 +2,11 @@
 
 TODO:
 - [x] Factory
-- [ ] Strategy
+- [x] Strategy
 - [ ] Repository
 - [ ] Dependency Injection
 - [ ] Adapter
-- [ ] Observer
+- [x] Observer
 - [ ] Builder
 
 ## Commands:

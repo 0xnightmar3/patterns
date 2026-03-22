@@ -7,7 +7,8 @@
     "build": "tsc",
     "factory": "npm run build && node ./dist/factory/factory.js",
     "builder": "npm run build && node ./dist/builder/builder.js",
-    "strategy": "npm run build && node ./dist/strategy/strategy.js"
+    "strategy": "npm run build && node ./dist/strategy/strategy.js",
+    "observer": "npm run build && node ./dist/observer/observer.js"
   },
   "keywords": [],
   "author": "",

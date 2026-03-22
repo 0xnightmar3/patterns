@@ -23,3 +23,5 @@ npm run [pattern]
 
 Available patterns for now:
 - factory
+- strategy
+- observer
